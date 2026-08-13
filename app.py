@@ -51,6 +51,11 @@ from src import rag
 
 load_dotenv()
 
+try:
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+except Exception:
+    pass  # no secrets.toml locally — fine, we're using .env instead
 
 # ---------------------------------------------------------------------------
 # PAGE CONFIGURATION
